@@ -1,0 +1,10 @@
+FROM crpi-9f69k88nzho970du.cn-shanghai.personal.cr.aliyuncs.com/zhanshop/python:3.15.2
+
+WORKDIR /var/www
+
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple
+
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+CMD ["python", "server.py", "server", "start"]
